@@ -56,7 +56,7 @@ public class XYSRP_Flow {
 	    setRestAssuredBaseURI();
 	    RequestSpecification request = RestAssured.given();
 	    request.header("Content-Type", "text/json");
-	    Response response = request.get("/Getallroutesbyairline?airline=xy&days=3&skipdays=2&orderby=asc");
+	    Response response = request.get("/Getallroutesbyairline?airline=xy&days=20&skipdays=19&orderby=asc");
 	    //System.out.println("Response body: " + response.body().asString());
 	    String s = response.body().asString();
 	    //System.out.println(s);
@@ -68,9 +68,9 @@ public class XYSRP_Flow {
 	    List<Database> databaseList = Arrays.asList(databaseArray);
 
 	    // Ensure there are at least 40 routes to avoid IndexOutOfBoundsException
-	    if (databaseList.size() >= 40) {
+	    if (databaseList.size() >= 76) {
 	        // Get routes from 31st to 40th (index 30 to 39)
-	        List<Database> limitedDatabaseList = databaseList.subList(20, 40);
+	        List<Database> limitedDatabaseList = databaseList.subList(0, 76);
 
 	        // Print the routes first
 	        for (Database data : limitedDatabaseList) {
